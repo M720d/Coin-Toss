@@ -15,30 +15,41 @@ struct ContentView: View {
     var coinType = ["h.circle.fill", "t.circle.fill"]
     var coinIndex = ["Heads", "Tails"]
     var coin : [Int] = [0,1]
+//    @State private var offset: CGFloat = 0
+    @State private var temp: Int = 0
+//    @State private var isAnimated = false
     
     var body: some View {
         VStack(alignment: .center) {
+            Text("Toss Count : \(temp)")
+                .padding(.bottom, 100)
+                
             
             Image(systemName: result)
                 .resizable()
                 .frame(width: 100, height: 100 , alignment: .center)
                 .foregroundColor(.yellow)
-                .padding(.bottom, 70)
+                .padding(.bottom, 30)
+                
             
             Text("\(res)")
                 .bold()
                 .fontWeight(.black)
                 .font(.system(size: 36))
             
+            
+            
             Spacer()
                 .frame(height: 100)
             
             Button(action: {
+                    ans = val()
+                    
+                    self.result = coinType[ans]
+                    self.res = coinIndex[ans]
+                    self.temp+=1
                 
-                ans = val()
                 
-                self.result = coinType[ans]
-                self.res = coinIndex[ans]
                 print("\(ans)")
                 print("\(coinIndex[ans])")
                 
